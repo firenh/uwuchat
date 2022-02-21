@@ -4,7 +4,8 @@
   "package": "fireopal.uwuchat.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ServerPlayNetworkHandlerMixin"
+    "ServerPlayNetworkHandlerMixin",
+    "ReloadCommandMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -15,6 +15,7 @@ import net.minecraft.command.argument.MessageArgumentType;
 import net.minecraft.network.MessageType;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
@@ -58,8 +59,8 @@ public class UwuChat implements ModInitializer {
         var source = context.getSource();
 
         // TranslatableText text = new TranslatableText("chat.type.text", player == null ? "@" : player.getDisplayName(), context.getArgument("message", MessageArgumentType.class));
-        Text text = MessageArgumentType.getMessage(context, "message");
-        TranslatableText text2 = new TranslatableText("chat.type.text", source.getDisplayName(), text);
+        String string = Uwuifier.uwuify(MessageArgumentType.getMessage(context, "message").getString(), UwuChat.getRandom());
+        TranslatableText text2 = new TranslatableText("chat.type.text", source.getDisplayName(), new LiteralText(string));
         source.getServer().getPlayerManager().broadcast(text2, MessageType.CHAT, source.getEntity().getUuid());
 
         return 1;
